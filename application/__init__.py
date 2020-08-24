@@ -9,7 +9,7 @@ from .project_parser import parser
 logging.basicConfig(level='INFO', format='%(asctime)s | %(levelname)s | %(name)s | %(message)s')
 logger = logging.getLogger(__package__)
 
-__version__ = '0.0.1'
+__version__ = '0.1.0'
 
 
 def main():

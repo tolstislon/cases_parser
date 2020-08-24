@@ -1,9 +1,12 @@
-from typing import List, Dict
-from pathlib import Path
-import sqlite3
-from .config import Config
-import requests
 import logging
+import sqlite3
+from pathlib import Path
+from typing import List, Dict
+
+import requests
+from tqdm import tqdm
+
+from .config import Config
 
 logger = logging.getLogger(__package__)
 
@@ -36,7 +39,7 @@ def load_data(issues: List[str], config: Config):
                 conn.commit()
 
             logger.debug('Check issues')
-            for issue in issues:
+            for issue in tqdm(issues):
                 cr.execute('SELECT * FROM issues WHERE id=?', (issue,))
                 if result := cr.fetchone():
                     logger.debug(f'{issue} get database')
